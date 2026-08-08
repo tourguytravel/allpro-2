@@ -1,40 +1,104 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b2a4d">
 <title>ALLPRO International Careers</title>
 <style>
-:root{--navy:#0b2a4d;--gold:#f2b31e;--ink:#10243d;--muted:#68788c;--line:#e3e9f1;--bg:#f6f8fb}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-a{text-decoration:none;color:inherit}.container{max-width:1200px;margin:auto;padding:0 22px}
-header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{display:block;width:220px}.logo img{display:block;width:100%;height:auto;max-height:58px;object-fit:contain}
-.desktop-nav{display:flex;align-items:center;gap:20px;font-size:14px;font-weight:700}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;font-weight:800}
-.gold{background:var(--gold);color:#fff}.navy{background:var(--navy);color:#fff}
-.mobile-actions{display:none;gap:7px;align-items:center}.mobile-actions .btn{padding:9px 11px;font-size:13px}
-.hero{color:#fff;background:linear-gradient(100deg,rgba(6,26,49,.97),rgba(6,26,49,.74)),url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1800&q=80') center/cover;padding:82px 0 112px}
-.eyebrow{color:#ffd66d;font-size:13px;font-weight:900;letter-spacing:1px}
-.hero h1{font-size:58px;line-height:1.03;letter-spacing:-1.7px;max-width:780px;margin:12px 0 18px}.hero h1 span{color:#ffc43a}
-.hero p{max-width:670px;font-size:19px;line-height:1.6;color:#e7edf5;margin:0}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
-.trust{margin-top:-40px}.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 16px 38px rgba(11,42,77,.12)}
-.trust-grid>div{padding:20px;border-right:1px solid var(--line)}.trust-grid>div:last-child{border-right:0}.trust-grid b{display:block;color:var(--navy);margin-bottom:5px}.trust-grid span{font-size:13px;color:var(--muted)}
-.section{padding:66px 0}.section h2{font-size:36px;color:var(--navy);margin:0 0 8px}.sub{font-size:17px;color:var(--muted);margin:0 0 28px}
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}.feature h3{margin:0 0 8px;color:var(--navy)}.feature p{margin:0;color:var(--muted);line-height:1.55}
-@media(max-width:900px){.desktop-nav{display:none}.mobile-actions{display:flex}.trust-grid{grid-template-columns:1fr 1fr}.feature-grid{grid-template-columns:1fr}}
-@media(max-width:620px){.container{padding:0 15px}.nav{height:68px}.logo{width:165px}.logo img{max-height:46px}.hero{padding:52px 0 86px}.hero h1{font-size:39px;line-height:1.04;letter-spacing:-1px}.hero p{font-size:16px;line-height:1.5}.actions{display:grid;grid-template-columns:1fr}.actions .btn{width:100%}.trust-grid{grid-template-columns:1fr}.trust-grid>div{border-right:0;border-bottom:1px solid var(--line)}.trust-grid>div:last-child{border-bottom:0}.section{padding:50px 0}.section h2{font-size:31px}}
-</style></head>
+:root{--n:#0b2a4d;--g:#f2b31e;--b:#2c6faa;--m:#6d7b8d;--l:#e3e9f1;--bg:#f6f8fb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:#10243d}a{text-decoration:none;color:inherit}.c{max-width:1180px;margin:auto;padding:0 22px}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--l)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px}.logo img{display:block;width:220px;max-height:58px;object-fit:contain}.dn{display:flex;gap:20px;align-items:center;font-size:14px;font-weight:700}.ma{display:none;gap:7px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;font-weight:800}.navy{background:var(--n);color:#fff}.gold{background:var(--g);color:#fff}
+.hero{color:#fff;background:linear-gradient(95deg,rgba(6,26,49,.97),rgba(6,26,49,.82)),url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1800&q=85') center/cover;padding:84px 0 116px}.eye{color:#ffd367;font-size:13px;font-weight:900;letter-spacing:1.5px}.hero h1{font-size:58px;line-height:1.02;letter-spacing:-1.8px;max-width:780px;margin:12px 0 18px}.hero h1 span{color:#ffc43a}.hero p{max-width:690px;font-size:19px;line-height:1.6;color:#e5edf5}.acts{display:flex;gap:11px;flex-wrap:wrap;margin-top:26px}
+.stats{margin-top:-42px;position:relative;z-index:4;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(11,42,77,.14)}.stat{padding:21px;border-right:1px solid var(--l)}.stat:last-child{border:0}.stat b{display:block;color:var(--n);margin-bottom:4px}.stat span{font-size:13px;color:var(--m)}
+.sec{padding:66px 0}.sec.white{background:#fff}.kick{color:var(--b);font-size:12px;font-weight:900;letter-spacing:1.4px}.sec h2{font-size:37px;color:var(--n);margin:7px 0 9px}.lead{color:var(--m);font-size:17px;line-height:1.6;max-width:760px}.cards,.steps{display:grid;gap:18px}.cards{grid-template-columns:repeat(3,1fr);margin-top:28px}.steps{grid-template-columns:repeat(4,1fr);margin-top:28px}.card,.step{background:#fff;border:1px solid var(--l);border-radius:15px;padding:22px}.card h3,.step h3{margin:0 0 7px;color:var(--n)}.card p,.step p{margin:0;color:var(--m);line-height:1.55}.num{width:34px;height:34px;border-radius:50%;background:#eaf1f8;color:var(--n);display:flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:12px}
+.cta{background:var(--n);color:#fff;border-radius:18px;padding:36px;display:flex;justify-content:space-between;align-items:center;gap:20px}.cta h2{color:#fff;margin:0 0 7px}.cta p{margin:0;color:#d3deea}footer{background:#071d36;color:#cad6e3;padding:28px 0;font-size:13px}.fi{display:flex;justify-content:space-between}
+@media(max-width:900px){.dn{display:none}.ma{display:flex}.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.c{padding:0 15px}.nav{height:68px}.logo img{width:155px;max-height:44px}.ma .btn{padding:9px 11px;font-size:12px}.hero{padding:52px 0 86px}.hero h1{font-size:39px;letter-spacing:-1px}.hero p{font-size:16px}.acts{display:grid}.acts .btn{width:100%}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--l)}.sec{padding:50px 0}.sec h2{font-size:31px}.steps{grid-template-columns:1fr}.cta{display:block;padding:26px 21px}.cta .btn{width:100%;margin-top:18px}.fi{display:block}}
+</style>
+</head>
 <body>
-<header><div class="container nav">
-<a href="/" class="logo"><img src="/allpro-logo.png" alt="ALLPRO International Careers"></a>
-<nav class="desktop-nav"><a href="#programs">J-1 Intern</a><a href="#programs">J-1 Trainee</a><a href="#how">How It Works</a><a href="#about">About</a><a class="btn navy" href="#jobs">Find Jobs</a><a class="btn gold" href="#apply">Apply Now</a></nav>
-<div class="mobile-actions"><a class="btn navy" href="#jobs">Jobs</a><a class="btn gold" href="#apply">Apply</a></div>
-</div></header>
-<main>
-<section class="hero"><div class="container"><div class="eyebrow">U.S. HOSPITALITY CAREER PROGRAMS</div><h1>Build Your Hospitality Career in the <span>USA</span> 🇺🇸</h1><p>Explore paid J-1 internship and training opportunities with hotels, resorts, restaurants and hospitality employers across the United States.</p><div class="actions"><a class="btn gold" href="#jobs">Explore Opportunities</a><a class="btn navy" href="#apply">Start Your ALLPRO Profile</a></div></div></section>
-<div class="container trust"><div class="trust-grid"><div><b>🇺🇸 U.S.-Based</b><span>Austin, Texas</span></div><div><b>🌎 Global Recruitment</b><span>International candidates</span></div><div><b>🏨 Hospitality Focus</b><span>Hotels, resorts & restaurants</span></div><div><b>🎓 J-1 Career Programs</b><span>Intern & Trainee pathways</span></div></div></div>
-<section class="section" id="programs"><div class="container"><h2>Start Your U.S. Career Journey</h2><p class="sub">A cleaner, simpler path from candidate profile to U.S. hospitality placement.</p><div class="feature-grid"><div class="feature"><h3>J-1 Intern</h3><p>For eligible students and recent graduates seeking structured training related to their field of study.</p></div><div class="feature"><h3>J-1 Trainee</h3><p>For eligible professionals with relevant education and experience seeking advanced U.S. training.</p></div><div class="feature"><h3>Hospitality Opportunities</h3><p>Culinary, food & beverage, rooms division, front office, guest services and more.</p></div></div></div></section>
-</main>
-</body></html>
+
+<header>
+<div class="c nav">
+<a class="logo" href="/"><img src="/allpro-logo.png" alt="ALLPRO International Careers"></a>
+<nav class="dn">
+<a href="#programs">J-1 Intern</a>
+<a href="#programs">J-1 Trainee</a>
+<a href="#how">How It Works</a>
+<a href="#about">About</a>
+<a class="btn navy" href="#jobs">Find Jobs</a>
+<a class="btn gold" href="#apply">Apply Now</a>
+</nav>
+<div class="ma">
+<a class="btn navy" href="#jobs">Jobs</a>
+<a class="btn gold" href="#apply">Apply</a>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<div class="c">
+<div class="eye">U.S. HOSPITALITY CAREER PROGRAMS</div>
+<h1>Build Your Hospitality Career in the <span>USA</span> 🇺🇸</h1>
+<p>Explore paid J-1 internship and training opportunities with hotels, resorts, restaurants and hospitality employers across the United States.</p>
+<div class="acts">
+<a class="btn gold" href="#jobs">Explore Opportunities</a>
+<a class="btn navy" href="#apply">Create Candidate Profile</a>
+</div>
+</div>
+</section>
+
+<div class="c">
+<div class="stats">
+<div class="stat"><b>🇺🇸 U.S.-Based Company</b><span>Austin, Texas</span></div>
+<div class="stat"><b>🌎 Global Recruitment</b><span>International candidates</span></div>
+<div class="stat"><b>🏨 Hospitality Focus</b><span>Hotels, resorts & restaurants</span></div>
+<div class="stat"><b>🎓 J-1 Career Programs</b><span>Intern & Trainee pathways</span></div>
+</div>
+</div>
+
+<section class="sec" id="programs">
+<div class="c">
+<div class="kick">PROGRAMS</div>
+<h2>Choose Your U.S. Career Path</h2>
+<p class="lead">ALLPRO helps qualified international candidates explore structured hospitality training opportunities in the United States.</p>
+<div class="cards">
+<div class="card"><h3>🎓 J-1 Intern</h3><p>For eligible students and recent graduates seeking structured practical training related to their field of study.</p></div>
+<div class="card"><h3>💼 J-1 Trainee</h3><p>For eligible professionals seeking advanced U.S. training that builds on education and relevant work experience.</p></div>
+<div class="card"><h3>🏨 Hospitality Opportunities</h3><p>Culinary, food & beverage, guest services, rooms division, front office and related placements.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec white" id="how">
+<div class="c">
+<div class="kick">HOW IT WORKS</div>
+<h2>A Simple Path to Your U.S. Opportunity</h2>
+<div class="steps">
+<div class="step"><div class="num">1</div><h3>Create Profile</h3><p>Tell us about your education, experience and career goals.</p></div>
+<div class="step"><div class="num">2</div><h3>Explore Jobs</h3><p>Browse hospitality internship and training opportunities.</p></div>
+<div class="step"><div class="num">3</div><h3>Apply</h3><p>Apply to positions that match your profile and eligibility.</p></div>
+<div class="step"><div class="num">4</div><h3>Get Placed</h3><p>Track review, interview, offer and J-1 processing.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec" id="apply">
+<div class="c">
+<div class="cta">
+<div><h2>Ready to Start Your U.S. Career Journey?</h2><p>Create your ALLPRO candidate profile and prepare to apply.</p></div>
+<a class="btn gold" href="#apply">Create Candidate Profile</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="c fi">
+<div><b>ALLPRO International Careers</b></div>
+<div>U.S. Hospitality Career Programs</div>
+</div>
+</footer>
+
+</body>
+</html>
