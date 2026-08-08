@@ -1,97 +1,135 @@
 {
   "about.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "application.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "apply.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "candidate.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 1,
+    "expected_auth_blocks": 1,
+    "title_count": 1
   },
   "contact.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "eligibility.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "index.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "job.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "jobs.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "notifications.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "onboarding.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "privacy.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "profile.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "program-intern.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "program-trainee.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "programs.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "reset.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 1,
+    "expected_auth_blocks": 1,
+    "title_count": 1
   },
   "saved.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   },
   "terms.html": {
     "duplicate_ids": [],
-    "titles": 1,
-    "footers": 1
+    "footer_count": 1,
+    "auth_blocks": 0,
+    "expected_auth_blocks": 0,
+    "title_count": 1
   }
 }
