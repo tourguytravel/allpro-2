@@ -13,23 +13,15 @@ footer{background:var(--n2);color:#cad6e3;padding:26px 0;font-size:13px}.fi{disp
 .hidden{display:none!important}
 @media(max-width:820px){.dn{display:none}.ma{display:flex}.jobs,.detail-grid,.profile-grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.applybox{position:static}}
 @media(max-width:620px){.c{padding:0 15px}.nav{height:66px}.logo img{width:150px;max-height:42px}.ma .btn{padding:8px 10px;font-size:12px}.pagehero{padding:38px 0 50px}.pagehero h1{font-size:33px}.filters{grid-template-columns:1fr;margin-top:-22px}.sec{padding-top:28px}.jobs{grid-template-columns:1fr}.job{min-height:0}.toolbar{display:block}.toolbar .count{margin-top:5px}.detail-title{font-size:30px}.fi{display:block}.fi div+div{margin-top:8px}}
-</style></head><body>
-<header><div class="c nav">
+</style></head><body><header><div class="c nav">
 <a class="logo" href="/"><img src="/allpro-logo.png" alt="ALLPRO International Careers"></a>
-<nav class="dn"><a href="/">Home</a><a href="/programs.html">Programs</a><a href="/jobs.html">Find Jobs</a><a href="/candidate.html">Candidate Account</a></nav>
+<nav class="dn"><a href="/">Home</a><a href="/programs.html">Programs</a><a href="/onboarding.html">Get Started</a><a href="/jobs.html">Find Jobs</a><a href="/candidate.html">Candidate Account</a></nav>
 <div class="ma"><a class="btn navy" href="/jobs.html">Jobs</a><a class="btn gold" href="/candidate.html">Account</a></div>
 </div></header>
-
-
 <section class="pagehero"><div class="c"><h1>Reset Password</h1><p>Create a new password for your ALLPRO candidate account.</p></div></section>
-<div class="auth"><div id="msg"></div><form id="form"><div class="field"><label>New Password</label><input id="pw" type="password" minlength="8" required></div><button class="btn gold" style="width:100%">Update Password</button></form></div>
-<div class="auth"><div class="tabs"><button id="signupTab" class="btn navy" onclick="showTab('signup')">Create Account</button><button id="signinTab" class="btn light" onclick="showTab('signin')">Sign In</button></div><div id="msg"></div>
-<form id="signup"><div class="field"><label>First Name</label><input id="fn" required></div><div class="field"><label>Last Name</label><input id="ln" required></div><div class="field"><label>Email</label><input id="em" type="email" required></div><div class="field"><label>Password</label><input id="pw" type="password" minlength="8" required></div><button class="btn gold" style="width:100%">Create Account</button></form>
-<form id="signin" class="hidden"><div class="field"><label>Email</label><input id="iem" type="email" required></div><div class="field"><label>Password</label><input id="ipw" type="password" required></div><button class="btn navy" style="width:100%">Sign In</button></form></div>
-<footer><div class="c fi"><div><b>ALLPRO International Careers</b></div><div>U.S. Hospitality Career Programs</div></div></footer>
-
-
+<div class="auth"><div id="msg"></div><form id="resetForm"><div class="field"><label>New Password</label><input id="newPassword" type="password" minlength="8" required></div><button class="btn gold" style="width:100%">Update Password</button></form></div>
+<footer><div class="c fi"><div><b>ALLPRO International Careers</b></div><div><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div></div></footer>
 <script>
 const sb=supabase.createClient('https://bwygbxsqptrlpexebtgc.supabase.co','sb_publishable_eEcYYRqJO6JD816WvS3tkQ_equAd452');
-form.onsubmit=async e=>{e.preventDefault();const {error}=await sb.auth.updateUser({password:pw.value});msg.innerHTML='<div class="msg '+(error?'err':'ok')+'">'+(error?error.message:'Password updated. You can now continue to your profile.')+'</div>';if(!error)setTimeout(()=>location.href='/profile.html',900);}
+resetForm.onsubmit=async e=>{e.preventDefault();const {error}=await sb.auth.updateUser({password:newPassword.value});msg.innerHTML='<div class="msg '+(error?'err':'ok')+'">'+(error?error.message:'Password updated. Redirecting to your profile...')+'</div>';if(!error)setTimeout(()=>location.href='/profile.html',800);}
 </script></body></html>

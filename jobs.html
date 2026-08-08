@@ -71,7 +71,7 @@ body{padding-bottom:72px}.kpi-grid,.jobfacts{grid-template-columns:1fr}.inline-a
 .market-head h2{margin:0;color:var(--n)}.sortline{display:flex;align-items:center;gap:8px}
 .sortline select{padding:9px;border:1px solid var(--l);border-radius:9px;background:#fff}
 .jobs3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.jobcard{background:#fff;border:1px solid var(--l);border-radius:15px;padding:18px;display:flex;flex-direction:column;min-height:300px}
+.jobimg{height:155px;border-radius:11px;background:linear-gradient(135deg,#e7eef6,#f8fafc);overflow:hidden;margin:-2px -2px 12px}.jobimg img{width:100%;height:100%;object-fit:cover;display:block}.logoRow{display:flex;align-items:center;gap:9px}.hostlogo{width:34px;height:34px;border-radius:8px;border:1px solid var(--l);object-fit:contain;background:#fff;padding:3px}.jobcard{background:#fff;border:1px solid var(--l);border-radius:15px;padding:18px;display:flex;flex-direction:column;min-height:300px}
 .jobcard.featured{border:2px solid #f0c457}
 .jobtop{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.featuredtag{background:#fff4cd;color:#6d5200;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:900}
 .livebadge{display:inline-flex;align-items:center;gap:5px;background:#e8f7ef;color:#1c6f4c;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:900}
@@ -118,24 +118,25 @@ body{padding-bottom:72px}.kpi-grid,.jobfacts{grid-template-columns:1fr}.inline-a
 <div id="jobs" class="jobs3"></div>
 </div>
 <section style="padding:36px 0 54px"><div class="c"><div class="panel"><h2>Not Sure Which Program Fits?</h2><p class="meta">Use the ALLPRO onboarding wizard to get an Intern vs Trainee recommendation before applying.</p><div class="inline-actions"><a class="btn gold" href="/onboarding.html">Get Started</a><a class="btn light" href="/programs.html">Compare Programs</a><a class="btn light" href="/saved.html">Saved Jobs</a></div></div></div></section>
-<footer><div class="c fi"><div><b>ALLPRO International Careers</b></div><div>U.S. Hospitality Career Programs</div></div></footer>
+<footer><div class="c fi"><div><b>ALLPRO International Careers</b></div><div><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div></div></footer>
 
 
 <div class="bottomnav"><a href="/jobs.html">Jobs</a><a href="/saved.html">Saved</a><a href="/profile.html">Applications</a><a href="/profile.html">Profile</a></div>
 
 <script>
 const sb=supabase.createClient('https://bwygbxsqptrlpexebtgc.supabase.co','sb_publishable_eEcYYRqJO6JD816WvS3tkQ_equAd452');
-let allJobs=[],USER=null,SAVED=new Set(),ACTIVE_CAT='';
+let allJobs=[],USER=null,SAVED=new Set(),ACTIVE_CAT='',ELIG=null;
 function esc(v){return String(v??'')}
 function deptOf(j){return j.department||((j.title||'').toLowerCase().includes('culinary')?'Culinary':(j.title||'').toLowerCase().includes('front')?'Front Office':(j.title||'').toLowerCase().includes('room')?'Rooms Division':'')}
 function card(j){const dept=deptOf(j);const featured=!!j.is_featured;return `<article class="jobcard ${featured?'featured':''}">
-<div class="jobtop"><span class="livebadge">${j.last_synced_at?'Recently synced':'Open'}</span>${featured?'<span class="featuredtag">Featured</span>':''}</div>
-<h3>${esc(j.title)}</h3><div class="employer">${esc(j.host_name)}</div><div class="jobmeta">📍 ${esc(j.city)}, ${esc(j.state)}<br>${esc(j.program_type)}</div>
+${j.hero_image_url?`<div class="jobimg"><img src="${j.hero_image_url}" alt="${esc(j.image_alt||j.host_name||j.title)}" onerror="this.parentElement.style.display='none'"></div>`:''}
+<div class="jobtop"><span class="livebadge">${j.last_synced_at?'Recently synced':'Open'}</span>${featured?'<span class="featuredtag">Featured</span>':''}</div>${ELIG&&ELIG.recommended_program&&j.program_type&&j.program_type.includes(ELIG.recommended_program.replace('J-1 ',''))?'<div style="margin-top:8px"><span class="match">Recommended for you</span></div>':''}
+<h3>${esc(j.title)}</h3><div class="logoRow">${j.host_logo_url?`<img class="hostlogo" src="${j.host_logo_url}" alt="${esc(j.host_name)} logo" onerror="this.style.display='none'">`:''}<div class="employer">${esc(j.host_name)}</div></div><div class="jobmeta">📍 ${esc(j.city)}, ${esc(j.state)}<br>${esc(j.program_type)}</div>
 <div class="payrow"><div class="wage">$${Number(j.hourly_wage||0).toFixed(2)}/hr</div><div class="openings">${j.openings||1} opening(s)</div></div>
 <div class="tags">${dept?`<span class="tag">${dept}</span>`:''}${j.housing?'<span class="tag">Housing info</span>':''}${j.weekly_hours?`<span class="tag">${j.weekly_hours} hrs/week</span>`:''}</div>
 <div class="jobactions"><a class="btn navy" href="/job.html?id=${j.id}">View Job</a><button class="btn save" onclick="toggleSave('${j.id}',this)">${SAVED.has(j.id)?'★ Saved':'☆ Save'}</button></div>
 </article>`}
-async function load(){const {data:{user}}=await sb.auth.getUser();USER=user;if(user){const {data:s}=await sb.from('saved_jobs').select('job_id').eq('candidate_id',user.id);SAVED=new Set((s||[]).map(x=>x.job_id));}
+async function load(){const {data:{user}}=await sb.auth.getUser();USER=user;if(user){const {data:s}=await sb.from('saved_jobs').select('job_id').eq('candidate_id',user.id);SAVED=new Set((s||[]).map(x=>x.job_id));const {data:e}=await sb.from('candidate_eligibility').select('*').eq('candidate_id',user.id).maybeSingle();ELIG=e;}
 const {data,error}=await sb.from('jobs').select('*').eq('is_active',true);if(error){jobs.innerHTML='<div class="empty2">Could not load opportunities.</div>';return}allJobs=data||[];
 const states=[...new Set(allJobs.map(j=>j.state).filter(Boolean))].sort();state.innerHTML='<option value="">All States</option>'+states.map(s=>`<option>${s}</option>`).join('');
 const depts=[...new Set(allJobs.map(deptOf).filter(Boolean))].sort();department.innerHTML='<option value="">All Departments</option>'+depts.map(d=>`<option>${d}</option>`).join('');
