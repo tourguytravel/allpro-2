@@ -1,0 +1,27 @@
+{
+  "account_button": "navy, same as Jobs",
+  "browse_current_opportunities": "Instagram gradient",
+  "get_started": "light, same as Compare Programs",
+  "updated_pages": [
+    "apply.html",
+    "saved.html",
+    "profile.html",
+    "eligibility.html",
+    "onboarding.html",
+    "about.html",
+    "job.html",
+    "jobs.html",
+    "index.html",
+    "notifications.html",
+    "terms.html",
+    "program-trainee.html",
+    "candidate.html",
+    "contact.html",
+    "privacy.html",
+    "reset.html",
+    "program-intern.html",
+    "about-social.html",
+    "application.html",
+    "programs.html"
+  ]
+}
