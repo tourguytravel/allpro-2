@@ -1,0 +1,20 @@
+{
+  "updated_pages": [
+    "apply.html",
+    "profile.html",
+    "eligibility.html",
+    "onboarding.html",
+    "job.html",
+    "jobs.html",
+    "index.html",
+    "terms.html",
+    "program-trainee.html",
+    "contact.html",
+    "privacy.html",
+    "program-intern.html",
+    "about-social.html",
+    "programs.html"
+  ],
+  "rule": "Eligibility: X% with candidate-profile-style progress bar",
+  "old_phrase_remaining": []
+}

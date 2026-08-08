@@ -60,6 +60,13 @@ body{padding-bottom:72px}.kpi-grid,.jobfacts{grid-template-columns:1fr}.inline-a
 .apply-review{max-width:860px;margin:auto}.review-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
 .sticky{position:sticky;top:92px}
 @media(max-width:760px){.profile-card,.bio-grid,.review-grid{grid-template-columns:1fr}.sticky{position:static}}
+
+.eligibility-progress{margin:14px 0 18px}
+.eligibility-progress .eligibility-label{font-size:16px;font-weight:800;color:var(--m);margin-bottom:8px}
+.eligibility-progress .eligibility-label strong{font-weight:900;color:var(--m)}
+.eligibility-track{width:100%;height:11px;background:#e9eef4;border-radius:999px;overflow:hidden}
+.eligibility-fill{height:100%;width:0%;background:var(--n);border-radius:999px;transition:width .25s ease}
+
 </style></head><body>
 <header><div class="c nav">
 <a class="logo" href="/"><img src="/allpro-logo.png" alt="ALLPRO International Careers"></a>
@@ -77,7 +84,8 @@ body{padding-bottom:72px}.kpi-grid,.jobfacts{grid-template-columns:1fr}.inline-a
 </div><div>
 <div class="panel"><div class="quick-grid"><a class="quick" href="/saved.html"><b>Saved Jobs</b><span class="meta">Review your favorite opportunities</span></a><a class="quick" href="/notifications.html"><b>Notifications</b><span class="meta" id="notifCount">Application and interview alerts</span></a></div></div>
 <div class="panel" style="margin-top:16px"><h2 class="section-title">My Applications</h2><div id="apps"></div></div>
-<div class="panel" style="margin-top:16px"><h2 class="section-title">Eligibility</h2><div id="eligBox" class="meta">Loading...</div><div class="inline-actions"><a class="btn light" href="/eligibility.html">Update Eligibility</a></div></div>
+<div class="panel" style="margin-top:16px"><h2 class="section-title">Eligibility</h2>
+<div class="eligibility-progress" data-eligibility-progress><div class="eligibility-label">Eligibility: <strong data-eligibility-percent>0%</strong></div><div class="eligibility-track"><div class="eligibility-fill" data-eligibility-fill></div></div></div><div id="eligBox" class="meta">Loading...</div><div class="inline-actions"><a class="btn light" href="/eligibility.html">Update Eligibility</a></div></div>
 <div class="panel" style="margin-top:16px"><h2 class="section-title">Messages & Next Steps</h2><div id="messages"></div></div>
 </div></div></section>
 <footer><div class="c fi"><div><b>ALLPRO International Careers</b></div><div><a href="/about-social.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div></div></footer>
@@ -99,4 +107,14 @@ const {data:n}=await sb.from('candidate_notifications').select('id').eq('candida
 const {data:m}=await sb.from('candidate_messages').select('*').eq('candidate_id',user.id).order('created_at',{ascending:false}).limit(8);messages.innerHTML=m&&m.length?m.map(x=>`<div class="msgcard ${x.is_read?'':'unread'}"><b>${x.subject||'ALLPRO Update'}</b><div class="meta">${x.body}</div><div class="count">${new Date(x.created_at).toLocaleString()}</div></div>`).join(''):'<div class="meta">No messages yet. ALLPRO updates will appear here.</div>';
 profileForm.onsubmit=async e=>{e.preventDefault();const user=await requireUser();const payload={first_name:pf.value,last_name:pl.value,phone:pp.value,whatsapp:pwha.value,nationality:pn.value,current_country:pc.value,date_of_birth:pdob.value||null,school:ps.value,major:pm.value,graduation_date:pg.value||null,program_interest:pi.value||null,english_level:pe.value,preferred_department:pdep.value,preferred_location:ploc.value,bio:pbio.value,linkedin_url:plink.value||null,languages:plangs.value.split(',').map(x=>x.trim()).filter(Boolean),skills:pskills.value.split(',').map(x=>x.trim()).filter(Boolean),certifications:pcerts.value.split(',').map(x=>x.trim()).filter(Boolean),emergency_contact_name:pecn.value||null,emergency_contact_phone:pecp.value||null,updated_at:new Date().toISOString()};payload.profile_complete=completion(payload)>=80;const {error}=await sb.from('candidate_profiles').update(payload).eq('id',user.id);profileMsg.innerHTML='<div class="msg '+(error?'err':'ok')+'">'+(error?error.message:'Profile saved.')+'</div>';if(!error){const c=completion(payload);pct.textContent=c+'%';bar.style.width=c+'%';}}
 async function signOut(){await sb.auth.signOut();location.href='/';}load();
-</script><div class="bottomnav"><a href="/jobs.html">Jobs</a><a href="/profile.html">Applications</a><a href="/profile.html">Profile</a></div></body></html>
+</script><div class="bottomnav"><a href="/jobs.html">Jobs</a><a href="/profile.html">Applications</a><a href="/profile.html">Profile</a></div>
+<script>
+function updateEligibilityProgress(value){
+  const n=Math.max(0,Math.min(100,Number(value)||0));
+  document.querySelectorAll('[data-eligibility-percent]').forEach(el=>el.textContent=Math.round(n)+'%');
+  document.querySelectorAll('[data-eligibility-fill]').forEach(el=>el.style.width=n+'%');
+}
+document.addEventListener('DOMContentLoaded',()=>updateEligibilityProgress(0));
+</script>
+
+</body></html>

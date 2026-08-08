@@ -73,6 +73,13 @@ body{padding-bottom:72px}.kpi-grid,.jobfacts{grid-template-columns:1fr}.inline-a
 .apply-review{max-width:860px;margin:auto}.review-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
 .sticky{position:sticky;top:92px}
 @media(max-width:760px){.profile-card,.bio-grid,.review-grid{grid-template-columns:1fr}.sticky{position:static}}
+
+.eligibility-progress{margin:14px 0 18px}
+.eligibility-progress .eligibility-label{font-size:16px;font-weight:800;color:var(--m);margin-bottom:8px}
+.eligibility-progress .eligibility-label strong{font-weight:900;color:var(--m)}
+.eligibility-track{width:100%;height:11px;background:#e9eef4;border-radius:999px;overflow:hidden}
+.eligibility-fill{height:100%;width:0%;background:var(--n);border-radius:999px;transition:width .25s ease}
+
 </style></head><body>
 <header><div class="c nav">
 <a class="logo" href="/"><img src="/allpro-logo.png" alt="ALLPRO International Careers"></a>
@@ -83,7 +90,8 @@ body{padding-bottom:72px}.kpi-grid,.jobfacts{grid-template-columns:1fr}.inline-a
 
 
 <section class="pagehero"><div class="c"><p>ALLPRO Opportunity</p><h1 id="heroTitle">Loading...</h1></div></section>
-<section class="sec"><div class="c detail-grid"><div class="panel"><h1 class="detail-title" id="title"></h1><div class="hostline"><div class="detail-host" id="host"></div><span class="market-badge">Open Opportunity</span></div><div class="detail-meta" id="meta"></div><div class="jobfacts" id="facts"></div><h2>About This Opportunity</h2><div class="desc" id="desc"></div><div id="whyBox"></div><div id="phaseBox"></div><h2 style="margin-top:22px">Eligibility</h2><div class="notice" id="elig"></div><h2 style="margin-top:22px">Housing & Benefits</h2><div id="benefits"></div></div><aside class="panel applybox"><div class="count">COMPENSATION</div><div class="pay" id="pay"></div><div class="meta" id="openings"></div><div class="field" style="margin-top:14px"><label>Optional Note to ALLPRO</label><textarea id="note" placeholder="Anything you'd like our team to know?"></textarea></div><button id="applyBtn" class="btn gold">Apply Now</button><button id="saveBtn" class="btn savebtn">☆ Save Job</button><a class="btn light" href="/eligibility.html">Check Eligibility</a><a class="btn light" href="/jobs.html">Back to Jobs</a></aside></div></section>
+<section class="sec"><div class="c detail-grid"><div class="panel"><h1 class="detail-title" id="title"></h1><div class="hostline"><div class="detail-host" id="host"></div><span class="market-badge">Open Opportunity</span></div><div class="detail-meta" id="meta"></div><div class="jobfacts" id="facts"></div><h2>About This Opportunity</h2><div class="desc" id="desc"></div><div id="whyBox"></div><div id="phaseBox"></div><h2 style="margin-top:22px">Eligibility</h2>
+<div class="eligibility-progress" data-eligibility-progress><div class="eligibility-label">Eligibility: <strong data-eligibility-percent>0%</strong></div><div class="eligibility-track"><div class="eligibility-fill" data-eligibility-fill></div></div></div><div class="notice" id="elig"></div><h2 style="margin-top:22px">Housing & Benefits</h2><div id="benefits"></div></div><aside class="panel applybox"><div class="count">COMPENSATION</div><div class="pay" id="pay"></div><div class="meta" id="openings"></div><div class="field" style="margin-top:14px"><label>Optional Note to ALLPRO</label><textarea id="note" placeholder="Anything you'd like our team to know?"></textarea></div><button id="applyBtn" class="btn gold">Apply Now</button><button id="saveBtn" class="btn savebtn">☆ Save Job</button><a class="btn light" href="/eligibility.html">Check Eligibility</a><a class="btn light" href="/jobs.html">Back to Jobs</a></aside></div></section>
 <footer><div class="c fi"><div><b>ALLPRO International Careers</b></div><div><a href="/about-social.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div></div></footer>
 
 
@@ -95,4 +103,14 @@ async function load(){if(!id){location.href='/jobs.html';return}const {data:j,er
 async function apply(jobId){const {data:{user}}=await sb.auth.getUser();if(!user){localStorage.setItem('pendingJob',jobId);localStorage.setItem('pendingNote',note.value||'');location.href='/candidate.html';return}const {data:existing}=await sb.from('applications').select('id').eq('candidate_id',user.id).eq('job_id',jobId).maybeSingle();if(existing){alert('You already applied to this position.');location.href='/profile.html';return}const {error}=await sb.from('applications').insert({candidate_id:user.id,job_id:jobId,candidate_note:note.value||null});if(error)alert(error.message);else location.href='/profile.html';}
 async function initSave(){const {data:{user}}=await sb.auth.getUser();if(!user){saveBtn.onclick=()=>location.href='/candidate.html';return}const {data:s}=await sb.from('saved_jobs').select('id').eq('candidate_id',user.id).eq('job_id',id).maybeSingle();saveBtn.textContent=s?'★ Saved Job':'☆ Save Job';saveBtn.onclick=async()=>{if(s){await sb.from('saved_jobs').delete().eq('id',s.id)}else{await sb.from('saved_jobs').insert({candidate_id:user.id,job_id:id})}location.reload();}}
 load();initSave();
-</script></body></html>
+</script>
+<script>
+function updateEligibilityProgress(value){
+  const n=Math.max(0,Math.min(100,Number(value)||0));
+  document.querySelectorAll('[data-eligibility-percent]').forEach(el=>el.textContent=Math.round(n)+'%');
+  document.querySelectorAll('[data-eligibility-fill]').forEach(el=>el.style.width=n+'%');
+}
+document.addEventListener('DOMContentLoaded',()=>updateEligibilityProgress(0));
+</script>
+
+</body></html>
