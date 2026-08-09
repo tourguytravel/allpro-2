@@ -29,11 +29,23 @@ footer{background:var(--n2);color:#cad6e3;padding:26px 0;font-size:13px}.fi{disp
 .quick{border:1px solid var(--l);border-radius:12px;padding:14px;background:#fff}
 .quick b{display:block;color:var(--n);margin-bottom:4px}
 @media(max-width:620px){.scheduler,.quick-grid{grid-template-columns:1fr}}
+
+.ap-menu-btn{width:44px;height:44px;border:0;border-radius:12px;background:#0b2d5c;color:white;font-size:24px;cursor:pointer}
+.ap-menu-overlay{position:fixed;inset:0;background:rgba(5,18,38,.42);opacity:0;visibility:hidden;z-index:998}
+.ap-menu-panel{position:fixed;top:0;right:-310px;width:min(82vw,300px);height:100vh;background:#0b2d5c;color:#fff;z-index:999;padding:24px;transition:.25s}
+.ap-menu-open .ap-menu-overlay{opacity:1;visibility:visible}.ap-menu-open .ap-menu-panel{right:0}
+.ap-menu-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;font-weight:900;font-size:18px}
+.ap-menu-close{border:0;background:none;color:white;font-size:30px}.ap-menu-links{display:flex;flex-direction:column;gap:8px}
+.ap-menu-links a{color:white;text-decoration:none;font-size:18px;font-weight:800;padding:14px 12px;border-radius:10px}
+.ap-menu-links a:hover{background:rgba(255,255,255,.1)}
 </style></head><body>
 <header><div class="c nav">
 <a class="logo" href="/"><img src="/allpro-logo.png" alt="ALLPRO International Careers"></a>
 <nav class="dn"><a href="/">Home</a><a href="/programs.html">Programs</a><a href="/jobs.html">Find Jobs</a><a href="/candidate.html">Candidate Account</a></nav>
-<div class="ma"><a class="btn navy" href="/jobs.html">Jobs</a><a class="btn navy" href="/candidate.html">Account</a></div>
+<div class="ma"><button class="ap-menu-btn" onclick="document.body.classList.add('ap-menu-open')" aria-label="Open menu">☰</button>
+<div class="ap-menu-overlay" onclick="document.body.classList.remove('ap-menu-open')"></div>
+<aside class="ap-menu-panel"><div class="ap-menu-head"><span>Menu</span><button class="ap-menu-close" onclick="document.body.classList.remove('ap-menu-open')">×</button></div>
+<nav class="ap-menu-links"><a href="/candidate.html">Account</a><a href="/jobs.html">Jobs</a><a href="/about.html">About Us</a><a href="/contact.html">Contact Us</a></nav></aside></div>
 </div></header>
 
 

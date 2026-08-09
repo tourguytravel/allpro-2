@@ -1,0 +1,10 @@
+{
+  "menu": "upper right",
+  "items": [
+    "Account",
+    "Jobs",
+    "About Us",
+    "Contact Us"
+  ],
+  "about_removed_home": true
+}
